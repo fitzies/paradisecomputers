@@ -9,9 +9,9 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   return (
     <>
       <div className="w-screen flex p-16 pb-0">
-        <div className="w-1/2 flex flex-col gap-3 ">
+        <div className="lg:w-1/2 w-full flex flex-col gap-3 ">
           <p className="pl-1">Lorem ipsum dolor sit.</p>
-          <h1 className="font-extrabold text-7xl">
+          <h1 className="font-extrabold lg:text-7xl text-5xl">
             Lorem ipsum dolor sit amet consectetur.
           </h1>
           <p className="py-2">
@@ -28,13 +28,13 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             </Button>
           </div>
         </div>
-        <div className="w-1/2 flex justify-center">
-          <div className="w-[60%] aspect-square bg-blue-200"></div>
+        <div className="lg:w-1/2 flex justify-center">
+          <div className="w-[60%] aspect-square bg-blue-200 lg:block hidden"></div>
         </div>
       </div>
       <div className="w-screen flex flex-col p-16 gap-3">
         <h2 className="font-bold text-lg">Other products:</h2>
-        <div className="grid grid-cols-3 gap-2 w-full">
+        <div className="md:grid md:grid-cols-3 flex flex-col gap-2 w-full">
           {products.slice(0, 3).map((product) => {
             return (
               <ProductView
