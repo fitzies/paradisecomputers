@@ -40,9 +40,9 @@ const Nav = () => {
         <Link href={"/cart"} className="bg-blue-300 p-2 rounded-full levitate">
           <PiShoppingCartSimpleBold className="text-lg text-white" />
         </Link>
-        <Button text="Account">
+        {/* <Button text="Account">
           <PiUserBold className="md:block hidden" />
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

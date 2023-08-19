@@ -16,4 +16,17 @@ const getProducts = async (): Promise<Product[]> => {
   }
 };
 
-export { getProducts };
+function createObjectWithModifiedNames(
+  products: Product[]
+): Record<string, Product> {
+  const result: Record<string, Product> = {};
+
+  products.forEach((product) => {
+    const modifiedName = product.Name.replace(/\s+/g, "-").toLowerCase();
+    result[modifiedName] = product;
+  });
+
+  return result;
+}
+
+export { getProducts, createObjectWithModifiedNames };
