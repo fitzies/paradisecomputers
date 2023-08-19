@@ -15,6 +15,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
                 productText={product.Description}
                 price={product.Price}
                 image={product.Image}
+                key={product.Name}
               />
             );
           })}
