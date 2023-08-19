@@ -18,7 +18,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           </h1>
           <p className="py-2">
             Unlock boundless tech possibilities with Paradise Computers.
-            Elevating South Africa's digital landscape through innovative
+            Elevating South Africa`s digital landscape through innovative
             solutions and exceptional service.
           </p>
           <div className="flex items-center gap-4">
