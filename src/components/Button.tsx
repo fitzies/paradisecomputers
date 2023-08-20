@@ -5,27 +5,47 @@ const Button = (props: {
   children?: any;
   reverse?: boolean;
   href?: string;
+  action?: any;
 }) => {
-  if (props.reverse) {
+  const commonStyles =
+    "font-semibold p-2 rounded-lg px-6 text-md flex gap-2 items-center levitate shadow-md lg:text-md text-sm text-center justify-center";
+
+  if (props.action) {
     return (
-      <Link
-        href={props.href ? props.href : "/"}
-        className="bg-black text-white font-semibold p-2 rounded-lg px-6 text-md flex gap-2 items-center levitate shadow-md lg:text-md text-sm"
+      <button
+        formAction={props.action}
+        className={`bg-gray-200 ${commonStyles}`}
       >
         {props.text}
         {props.children}
+      </button>
+    );
+  }
+
+  if (props.href) {
+    return (
+      <Link href={props.href}>
+        <div
+          className={`bg-gray-200 ${
+            props.reverse ? "bg-black text-white" : ""
+          } ${commonStyles}`}
+        >
+          {props.text}
+          {props.children}
+        </div>
       </Link>
     );
   }
 
   return (
-    <Link
-      href={props.href ? props.href : "/"}
-      className="bg-gray-200 font-semibold p-2 rounded-lg px-6 text-md flex gap-2 items-center levitate shadow-md lg:text-md text-sm"
+    <button
+      className={`bg-${
+        props.reverse ? "black text-white" : "gray-200"
+      } ${commonStyles}`}
     >
       {props.text}
       {props.children}
-    </Link>
+    </button>
   );
 };
 

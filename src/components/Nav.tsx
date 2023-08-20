@@ -6,6 +6,7 @@ import {
   PiUserBold,
 } from "react-icons/pi";
 import Button from "./Button";
+import { cookies } from "next/headers";
 
 const Nav = () => {
   const items = ["Shop", "Upgrades", "Contact"];
@@ -28,10 +29,10 @@ const Nav = () => {
       </div>
       <Link
         href={"/"}
-        className="font-bold text-xl lg:flex hidden items-center gap-2 w-1/3 justify-center"
+        className="font-bold text-xl flex items-center gap-2 w-1/3 justify-center"
       >
         <PiButterflyFill className="text-2xl text-blue-300 -rotate-12" />
-        PARADISE
+        <p className="md:block hidden">PARADISE</p>
       </Link>
       <div className="flex items-center gap-4 w-1/3 justify-end">
         <Link href={"/search"}>

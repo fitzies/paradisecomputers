@@ -1,6 +1,6 @@
 import Button from "@/components/Button";
 import ProductView from "@/components/ProductView";
-import { getProducts } from "@/util/sheet";
+import { getProducts } from "@/util/lib";
 import { PiArrowBendDownRightBold, PiDiceFourBold } from "react-icons/pi";
 import computer from "../assets/preview.jpg";
 import Image from "next/image";

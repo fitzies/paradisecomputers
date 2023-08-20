@@ -29,4 +29,29 @@ function createObjectWithModifiedNames(
   return result;
 }
 
-export { getProducts, createObjectWithModifiedNames };
+const calculateCartItems = (cart: string[], products: any): CartItem[] => {
+  const cartItemsMap = new Map<string, CartItem>();
+
+  cart.forEach((item) => {
+    const product = createObjectWithModifiedNames(products)[item];
+
+    if (!cartItemsMap.has(product.Name)) {
+      cartItemsMap.set(product.Name, {
+        Product: product.Name,
+        Price: Number(product.Price),
+        Quantity: 0,
+        Total: 0,
+      });
+    }
+
+    const cartItem = cartItemsMap.get(product.Name);
+    if (cartItem) {
+      cartItem.Quantity++;
+      cartItem.Total += Number(product.Price);
+    }
+  });
+
+  return Array.from(cartItemsMap.values());
+};
+
+export { getProducts, createObjectWithModifiedNames, calculateCartItems };
