@@ -1,4 +1,9 @@
-type RowData = Array<string | number>;
+"use client";
+
+import { useRouter } from "next/navigation";
+import React from "react";
+
+type RowData = Array<string | number | JSX.Element>;
 
 interface TableProps {
   fields: string[];
@@ -6,6 +11,8 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ fields, data }) => {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col w-full">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -29,7 +36,13 @@ const Table: React.FC<TableProps> = ({ fields, data }) => {
                 {data.map((row, rowIndex) => (
                   <tr
                     key={rowIndex}
-                    className="border-b border-light hover:bg-[#eee] duration-150"
+                    className="border-b border-light hover:bg-[#eee] duration-150 cursor-pointer"
+                    onClick={() => {
+                      const link = (row[0] as string)
+                        .replace(/\s+/g, "-")
+                        .toLowerCase();
+                      router.push("/products/" + link);
+                    }}
                   >
                     {row.map((cell, cellIndex) => (
                       <td

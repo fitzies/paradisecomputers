@@ -24,12 +24,12 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           <p>{product.Description}</p>
           <p>R{product.Price}</p>
           <form className="my-4 flex items-center gap-4">
-            <input
+            {/* <input
               type="number"
               className="aspect-square w-1/6 bg-gray-100 outline-none border-none rounded-lg px-1 text-center shadow-sm"
               defaultValue={1}
               name="count"
-            />
+            /> */}
             <input
               type="hidden"
               name="name" // Set the name for the hidden input field

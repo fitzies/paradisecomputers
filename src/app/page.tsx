@@ -11,7 +11,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   return (
     <>
       <div className="w-screen flex p-16 pb-0 ">
-        <div className="lg:w-1/2 w-full flex flex-col gap-3 pl-8">
+        <div className="lg:w-1/2 w-full flex flex-col gap-3 md:pl-8">
           <p className="pl-1">Lorem ipsum dolor sit.</p>
           <h1 className="font-extrabold lg:text-7xl text-5xl">
             Experience digital delight

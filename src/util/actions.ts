@@ -1,10 +1,11 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { removeString } from "./lib";
 
 async function create(formData: FormData) {
   const product = formData.get("name");
-  const count = Number(formData.get("count"));
+  // const count = Number(formData.get("count"));
 
   const cookiesList = cookies();
   let cart = cookiesList.get("cart")?.value;
@@ -15,7 +16,8 @@ async function create(formData: FormData) {
   }
 
   if (cart) {
-    const productsToAdd = (product.toString() + " ").repeat(count).trim();
+    const productsToAdd = (product.toString() + " ") /*.repeat(count)*/
+      .trim();
     cart = cart + " " + productsToAdd;
     cookiesList.set("cart", cart, {
       path: "/",
@@ -34,4 +36,26 @@ async function create(formData: FormData) {
   console.log(newCart);
 }
 
-export { create };
+async function removeItem(formData: FormData) {
+  const product = formData.get("name");
+
+  const cookiesList = cookies();
+  let cart = cookiesList.get("cart")?.value;
+
+  if (!cart || !product) return;
+
+  const result = removeString(cart, product.toString());
+  if (result.length <= 1) {
+    cookiesList.set("cart", result, {
+      path: "/",
+      maxAge: 0,
+    });
+  } else {
+    cookiesList.set("cart", result, {
+      path: "/",
+      maxAge: 1000000,
+    });
+  }
+}
+
+export { create, removeItem };

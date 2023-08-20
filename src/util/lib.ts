@@ -16,6 +16,11 @@ const getProducts = async (): Promise<Product[]> => {
   }
 };
 
+const removeString = (source: string, strToRemove: string): string => {
+  const regex = new RegExp(strToRemove, "g");
+  return source.replace(regex, "").trim();
+};
+
 function createObjectWithModifiedNames(
   products: Product[]
 ): Record<string, Product> {
@@ -54,4 +59,9 @@ const calculateCartItems = (cart: string[], products: any): CartItem[] => {
   return Array.from(cartItemsMap.values());
 };
 
-export { getProducts, createObjectWithModifiedNames, calculateCartItems };
+export {
+  getProducts,
+  createObjectWithModifiedNames,
+  calculateCartItems,
+  removeString,
+};
