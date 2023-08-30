@@ -20,6 +20,8 @@ const ProductView: React.FC<ProductViewProps> = ({
 }) => {
   const slug = createSlug(productTitle);
 
+  const isMobile = true; //window.innerWidth <= 768;
+
   return (
     <Link
       className="border-2 px-4 py-6 w-full rounded-xl flex items-center levitate"
@@ -28,7 +30,13 @@ const ProductView: React.FC<ProductViewProps> = ({
       <div className="gap-1 flex flex-col w-4/5 h-3/4">
         <h2 className="text-gray-800 text-sm">R{price}</h2>
         <h1 className="font-bold text-xl">{productTitle}</h1>
-        <p className="text-gray-600">{productText}</p>
+        <p className="text-gray-600">
+          {isMobile
+            ? productText.length >= 70
+              ? productText.substring(0, 68) + "..."
+              : productText
+            : null}
+        </p>
       </div>
       <div className="w-4/5 aspect-square ml-auto flex justify-center items-center">
         <img src={image} alt={productTitle} className="w-full" />
