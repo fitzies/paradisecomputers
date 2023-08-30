@@ -1,7 +1,7 @@
 const getProducts = async (): Promise<Product[]> => {
   try {
     const response = await fetch("https://sheetdb.io/api/v1/xtn7nzx00kjr0", {
-      next: { revalidate: 3600 },
+      next: { revalidate: 30 },
     });
 
     if (!response.ok) {
